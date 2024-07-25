@@ -11,8 +11,6 @@ public class App {
 
         Queue<Integer> resultQueue = new LinkedList<>();
 
-        int index = 0;
-
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
             int num1 = sc.nextInt();
@@ -28,45 +26,28 @@ public class App {
             switch (operator) {
                 case '+':
                     result = num1 + num2;
-                    index ++;
-                    System.out.println(index);
-                    if(index <= 10) resultQueue.add(result);
-                    else {
-                        resultQueue.poll();
-                        resultQueue.add(result);
-                    }
+                    resultQueue.add(result);
+
                     System.out.println("결과 : " + num1 + operator + num2 + " = " + result);
                     break;
                 case '-':
                     result = num1 - num2;
-                    index ++;
-                    if(index <= 10) resultQueue.add(result);
-                    else {
-                        resultQueue.poll();
-                        resultQueue.add(result);
-                    }
+                    resultQueue.add(result);
+
                     System.out.println("결과 : " + num1 + operator + num2 + " = " + result);
                     break;
                 case '*':
                     result = num1 * num2;
-                    index ++;
-                    if(index <= 10) resultQueue.add(result);
-                    else {
-                        resultQueue.poll();
-                        resultQueue.add(result);
-                    }
+                    resultQueue.add(result);
+
                     System.out.println(STR."결과 : \{num1}\{operator}\{num2} = \{result}");
                     break;
                 case '/':
                     if (num2 == 0) System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                     else {
                         result = num1 / num2;
-                        index ++;
-                        if(index <= 10) resultQueue.add(result);
-                        else {
-                            resultQueue.poll();
-                            resultQueue.add(result);
-                        }
+                        resultQueue.add(result);
+
                         System.out.println("결과 : " + num1 + operator + num2 + " = " + result);
                     }
                     break;
@@ -74,10 +55,17 @@ public class App {
                     System.out.println("잘못된 입력입니다.");
             }
 
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String remove = sc.next();
+            if(Objects.equals(remove, "remove")) resultQueue.poll();
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inquiry = sc.next();
+            if(Objects.equals(inquiry, "inquiry")) System.out.println(resultQueue);
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            String str = sc.next();
-            if(Objects.equals(str, "exit")) break;
-            else System.out.println(resultQueue);
+            String exit = sc.next();
+            if(Objects.equals(exit, "exit")) break;
         }
     }
 }
