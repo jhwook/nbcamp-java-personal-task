@@ -14,6 +14,30 @@ public class App {
         System.out.print("사칙연산 기호를 입력하세요: "); // +, -, *, /
         char operator = sc.next().charAt(0);
 
-        System.out.println(num1 + "" + operator + "" + num2);
+        int result = 0;
+
+        switch (operator) {
+            case '+' :
+                result = num1 + num2;
+                System.out.println("결과 : " + num1 + operator + num2 + " = " + result);
+                break;
+            case '-' :
+                result = num1 - num2;
+                System.out.println("결과 : " + num1 + operator + num2 + " = " + result);
+                break;
+            case '*' :
+                result = num1 * num2;
+                System.out.println(STR."결과 : \{num1}\{operator}\{num2} = \{result}");
+                break;
+            case '/' :
+                if(num2 == 0) System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                else {
+                    result = num1 / num2;
+                    System.out.println("결과 : " + num1 + operator + num2 + " = " + result);
+                }
+                break;
+            default:
+                System.out.println("잘못된 입력입니다.");
+        }
     }
 }
