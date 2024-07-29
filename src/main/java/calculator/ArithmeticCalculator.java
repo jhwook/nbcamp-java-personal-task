@@ -1,11 +1,30 @@
 package src.main.java.calculator;
 
-import java.util.Queue;
+public class ArithmeticCalculator  {
+    public double operate (int a, int b, char operator) throws BadException{
+        double result = 0;
 
-public class ArithmeticCalculator extends Calculator {
-
-    public ArithmeticCalculator(Queue queue) {
-        super(queue);
+        switch (operator) {
+            case '+':
+                result = AddOperator.operator(a, b);
+                break;
+            case '-':
+                result = SubtractOperator.operator(a, b);
+                break;
+            case '*':
+                result = MultiplyOperator.operator(a, b);
+                break;
+            case '/':
+                result = DivideOperator.operator(a, b);
+                break;
+            case '%':
+                result = ModOperator.operator(a, b);
+            default:
+                System.out.println("잘못된 입력입니다.");
+        }
+//        result = operation.operate(this.a, this.b);
+        return result;
     }
+
 
 }

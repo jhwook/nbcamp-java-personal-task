@@ -1,10 +1,9 @@
 package src.main.java.calculator;
 
-import java.util.Queue;
-
-public class CircleCalculator extends Calculator{
-
-    public CircleCalculator(Queue queue) {
-        super(queue);
+public class CircleCalculator {
+    static final double PI = 3.14;
+    public double operate (double radius) {
+        return PI * radius * radius;
     }
+
 }

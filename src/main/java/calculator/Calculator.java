@@ -6,48 +6,26 @@ public class Calculator {
     private int a;
     private int b;
     private char operator;
-    private final Queue<Double> queue;
-    private final double PI = 3.14;
-    static double radius;
+    private Queue<Double> queue;
 
-    public Calculator(Queue queue) {
+    private final double PI = 3.14;
+    private double radius;
+
+    private final ArithmeticCalculator calculate = new ArithmeticCalculator();
+    private final CircleCalculator calculateCircleArea = new CircleCalculator();
+
+    public Calculator(Queue<Double> queue) {
         this.queue = queue;
     }
-    public double calculate(int a, int b, char operator) throws BadException {
-        double result = 0;
 
-        switch (operator) {
-            case '+':
-                result = a + b;
-                this.queue.add(result);
-                break;
-            case '-':
-                result = a - b;
-                this.queue.add(result);
-                break;
-            case '*':
-                result = a * b;
-                this.queue.add(result);
-                break;
-            case '/':
-                if (b == 0) throw new BadException();
-                else {
-                    result = a / b;
-                    this.queue.add(result);
-                }
-                break;
-            default:
-                System.out.println("잘못된 입력입니다.");
-
-
-
-        }
+    public double calculate () throws Exception {
+        double result = this.calculate.operate(a, b, operator);
+        this.queue.add(result);
         return result;
     }
 
-    public double calculateCircleArea (double radius) {
-        double result = 0;
-        result = PI * radius * radius;
+    public double calculateCircleArea () {
+        double result = this.calculateCircleArea.operate(radius);
         this.queue.add(result);
         return result;
     }
@@ -69,9 +47,6 @@ public class Calculator {
     public char getOperator () {
         return operator;
     }
-    public double getRadius () {
-        return radius;
-    }
 
     public void setA(int a) {
         this.a = a;
@@ -84,6 +59,11 @@ public class Calculator {
     public void setOperator(char operator) {
         this.operator = operator;
     }
+
+    public double getRadius () {
+        return radius;
+    }
+
     public void setRadius(double radius) {
         this.radius = radius;
     }
