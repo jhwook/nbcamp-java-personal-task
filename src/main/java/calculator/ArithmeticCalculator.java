@@ -1,5 +1,8 @@
 package src.main.java.calculator;
 
+//public enum OperatorType {
+//    plus,minus;
+//}
 public class ArithmeticCalculator  {
     public double operate (int a, int b, char operator) throws BadException{
         double result = 0;

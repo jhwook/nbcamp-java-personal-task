@@ -33,8 +33,6 @@ public class App {
                 result = calculator.calculate();
             }
 
-
-
             System.out.println("결과: " + result);
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             if(Objects.equals(sc.next(), "remove")) calculator.removeResult();
